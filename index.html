@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Word Cloud Generator</title>
+    <style>
+        /* Reset CSS */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        background-color: #f0f2f5; /* Light gray background */
+        }
+
+        /* Header */
+        header {
+        background-color: #17a2b8; /* Royal blue */
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        }
+
+        header h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        }
+
+        header p {
+        font-size: 16px;
+        }
+
+        /* Main Content */
+        .container {
+        max-width: 900px; /* Adjust width for larger screens */
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+        margin-bottom: 20px;
+        }
+
+        .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333; /* Darker text for labels */
+        }
+
+        .form-group input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+
+        .form-group button {
+        padding: 10px 20px;
+        background-color: #17a2b8; /* Royal blue button */
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+        background-color: #007bff; /* Darker blue on hover */
+        }
+
+        /* Word Cloud */
+        .wordcloud {
+        text-align: center;
+        margin-top: 20px;
+        }
+
+        .wordcloud img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #17a2b8; /* Royal blue */
+        color: #fff;
+        margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Website Word Cloud Generator</h1>
+        <p>Generate word clouds from website content</p>
+    </header>
+    <div class="container">
+        <form action="/" method="post">
+            <div class="form-group">
+                <label for="url">Enter URL(s):</label>
+                <input type="text" id="url" name="url" placeholder="Enter URL" required>
+            </div>
+            <!-- You can add more form groups for additional URLs -->
+            <button type="submit">Generate Word Cloud</button>
+        </form>
+        <!-- Display word cloud images -->
+        {% for image in images %}
+        <div class="wordcloud">
+            <img src="{{ url_for('static', filename=image) }}" alt="Word Cloud">
+        </div>
+        {% endfor %}
+    </div>
+    <footer>
+        <p>&copy; 2024 Tool Word Counts Platform</p>
+    </footer>
+</body>
+</html>
